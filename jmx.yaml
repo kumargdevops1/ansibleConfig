@@ -1,0 +1,79 @@
+init_config:
+       conf:
+       - include:
+          attribute:
+            OpenFileDescriptorCount:
+              metric_type: gauge
+              alias: jvm.openfiledescriptor.count
+            PeakThreadCount:
+              metric_type: gauge
+              alias: jvm.thread.count.max
+            FreeSwapSpaceSize:
+              metric_type: gauge
+              alias: jvm.swapspace.free
+            ThreadCount:
+              metric_type: gauge
+              alias: jvm.thread.count
+            ProcessCpuLoad:
+              metric_type: gauge
+              alias: jvm.process.cpu.utilization
+            TotalSwapSpaceSize:
+              metric_type: gauge
+              alias: jvm.swapspace.total
+            MaxFileDescriptorCount:
+              metric_type: gauge
+              alias: jvm.openfiledescriptor.count.max
+            TotalPhysicalMemorySize:
+              metric_type: gauge
+              alias: jvm.physicalmemory.total
+            SystemCpuLoad:
+              metric_type: gauge
+              alias: jvm.system.cpu.utilization
+            FreePhysicalMemorySize:
+              metric_type: gauge
+              alias: jvm.physicalmemory.free
+            domain: java.lang
+
+instances:
+   - host: localhost
+     #port: 10941
+     port: 12348
+     name: fscom_pricing_jmx
+     tags: 
+      serviceowner: pdp
+
+   - host: localhost
+     port: 10951
+     name: fscom_catalog_jmx
+     tags: 
+      serviceowner: pdp
+
+   - host: localhost
+     port: 10981
+     name: fscom_products_jmx
+     tags: 
+      serviceowner: pdp
+
+   - host: localhost
+     port: 11911
+     name: fscom_product_certificates_jmx
+     tags: 
+      serviceowner: pdp
+
+   - host: localhost
+     port: 12841
+     name: fscom_catalog_rules_jmx
+     tags: 
+      serviceowner: pdp
+
+   - host: localhost
+     port: 12831
+     name: fscom_shipping_tax_jmx
+     tags: 
+      serviceowner: cart
+
+   - host: localhost
+     port: 12821
+     name: fscom_cart_jmx
+     tags: 
+      serviceowner: cart
