@@ -1,0 +1,17 @@
+---
+- name: Transfer and execute a script.
+  hosts: datadog
+  user: ec2-user
+  sudo: yes
+  tasks:
+     - name: Transfer the script
+       copy: src=test.sh dest=/home/ec2-user mode=0777
+
+     - name: Execute the script
+       command: sh /home/ec2-user/test.sh
+
+     - name: Copy tomcat configuration file
+       copy: src=conf.yaml dest=/etc/datadog-agent/conf.d/tomcat.d mode=0777
+
+     - name: Enable trace collection for application performance monitoring
+       command: sh tracecollection.sh
